@@ -1,0 +1,31 @@
+<center>
+<h1> Welcome On your Tasks Manager</h1>
+
+<div class ="container body">
+  <div class ="row">
+    <% @tasks.each do |task| %>
+      <div class="col-xs-12 col-md-6">
+        <li class="title-home list-inline "><%= link_to task.description, task_path(task) %></li>
+
+          <% if task.done %>
+            <p> <%= "[ X ]" %> </p>
+          <% else %>
+            <p> <%= "[" + " " + "]" %> </p>
+          <% end %>
+        <p class="title-add"> <%= link_to "Modify this Task", edit_task_path(task) %>  </p>
+        <p class="title-delete "><%= link_to "Delete", task_path(task), method: :delete, data: {confirm:"Are you sure to delete ?"}%></p>
+      </div>
+    <% end %>
+
+
+
+
+
+    <div class="col-xs-12 col-md-12">
+      <p class="title"> <%= link_to "Add a new Task", new_task_path %>  </p>
+    </div>
+
+  </div>
+</div>
+
+</center>
